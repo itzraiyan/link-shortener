@@ -1,4 +1,3 @@
-
 document.getElementById('shortenButton').addEventListener('click', async () => {
     const input = document.getElementById('urlInput').value;
     const urls = input.split('\n').map(url => url.trim()).filter(url => url);
@@ -26,7 +25,7 @@ document.getElementById('shortenButton').addEventListener('click', async () => {
 });
 
 async function shortenUrl(url) {
-    const response = await fetch('http://127.0.0.1:5000/shorten', {
+    const response = await fetch('https://link-shortener-swbn.onrender.com/shorten', { // Use deployed backend URL
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ url }),
