@@ -1,5 +1,6 @@
 from urllib.parse import quote as url_quote
 from flask import Flask, request, jsonify
+import os
 
 app = Flask(__name__)
 
@@ -10,8 +11,11 @@ def shorten_url():
     if not original_url:
         return jsonify({"error": "No URL provided"}), 400
     
+    # Generate a shortened URL
     shortened_url = f"https://short.ly/{hash(original_url) % 10000}"
     return jsonify({"original_url": original_url, "shortened_url": shortened_url})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # Use dynamic port or fallback to 5000
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
