@@ -1,5 +1,9 @@
 from urllib.parse import quote as url_quote
 from flask import Flask, request, jsonify
+from flask_cors import CORS
+
+# Enable CORS for all domains
+CORS(app)
 import os
 
 app = Flask(__name__)
