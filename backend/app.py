@@ -1,12 +1,13 @@
 from urllib.parse import quote as url_quote
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import os
+
+# Initialize Flask app
+app = Flask(__name__)
 
 # Enable CORS for all domains
 CORS(app)
-import os
-
-app = Flask(__name__)
 
 @app.route('/shorten', methods=['POST'])
 def shorten_url():
